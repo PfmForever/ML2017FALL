@@ -1,0 +1,13 @@
+import sys
+filename = sys.argv[1]
+f = open(filename,'r',encoding = 'UTF-8')
+content = f.read()
+contentSplit = content.split()
+#print(contentSplit)
+contentAppear = []
+appear = 0
+for idx in contentSplit:
+    if(not(idx in contentAppear)):
+        contentAppear.append(idx)
+        print(idx,appear,contentSplit.count(idx))
+        appear = appear+1
