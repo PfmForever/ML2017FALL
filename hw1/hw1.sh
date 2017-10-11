@@ -1,1 +1,1 @@
-python3 readCSV.py $@
+python3 hw1.py $@
