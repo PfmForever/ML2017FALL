@@ -61,8 +61,6 @@ for epoch in range(1, epoch_num):
     # Do validation and parameter saving
     if (epoch) % save_param_iter == 0:
         print('=====Saving Param at epoch %d=====' % epoch)
-        np.savetxt(os.path.join(save_dir, 'w'), w)
-        np.savetxt(os.path.join(save_dir, 'b'), [b,])
         print('epoch avg loss = %f' % (total_loss / (float(save_param_iter) * train_data_size)))
         total_loss = 0.0
         # valid
@@ -102,9 +100,6 @@ for epoch in range(1, epoch_num):
 # infer
 test_data_size = len(X_test)
 # Load parameters
-print('=====Loading Param from %s=====' % save_dir)
-w = np.loadtxt(os.path.join(save_dir, 'w'))
-b = np.loadtxt(os.path.join(save_dir, 'b'))
 
 # predict
 z = (np.dot(X_test, np.transpose(w)) + b)

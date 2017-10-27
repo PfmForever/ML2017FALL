@@ -64,12 +64,6 @@ shared_sigma = (float(cnt1) / train_data_size) * sigma1 + (float(cnt2) / train_d
 N1 = cnt1
 N2 = cnt2
 
-print('=====Saving Param=====')
-param_dict = {'mu1':mu1, 'mu2':mu2, 'shared_sigma':shared_sigma, 'N1':[N1], 'N2':[N2]}
-for key in sorted(param_dict):
-    print('Saving %s' % key)
-    np.savetxt(os.path.join(save_dir, ('%s' % key)), param_dict[key])
-
 print('=====Validating=====')
 sigma_inverse = np.linalg.inv(shared_sigma)
 w = np.dot( (mu1-mu2), sigma_inverse)
@@ -82,14 +76,6 @@ result = (np.squeeze(Y_valid) == y_)
 print('Valid acc = %f' % (float(result.sum()) / result.shape[0]))
 
 
-# -------------------------infer-----------------------
-# Load parameters
-print('=====Loading Param from %s=====' % save_dir)
-mu1 = np.loadtxt(os.path.join(save_dir, 'mu1'))
-mu2 = np.loadtxt(os.path.join(save_dir, 'mu2'))
-shared_sigma = np.loadtxt(os.path.join(save_dir, 'shared_sigma'))
-N1 = np.loadtxt(os.path.join(save_dir, 'N1'))
-N2 = np.loadtxt(os.path.join(save_dir, 'N2'))
 
 # Predict
 sigma_inverse = np.linalg.inv(shared_sigma)
