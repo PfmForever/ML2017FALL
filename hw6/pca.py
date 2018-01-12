@@ -1,8 +1,8 @@
 from skimage import io
 import numpy as np
-from PIL import Image
+# from PIL import Image
 from skimage import transform
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import sys
 file_path = sys.argv[1]
 
